@@ -7,14 +7,19 @@
     --card-bg: #ffffff;
 }
 
+/* Universal Box-Sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
+    overflow-x: hidden; /* Hide horizontal scrollbar/overflow by default */
 }
 
 /* Header and Navigation */
@@ -22,7 +27,7 @@ header {
     background-color: var(--card-bg);
     padding: 1rem 5%;
     position: fixed;
-    width: 90%;
+    width: 100%; /* Changed to 100% to fill width */
     top: 0;
     z-index: 1001; /* Must be higher than mobile menu */
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -32,6 +37,8 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px; /* Constrain nav width on larger screens */
+    margin: 0 auto;
 }
 
 nav .logo {
@@ -39,6 +46,7 @@ nav .logo {
     font-weight: bold;
     color: var(--primary-color);
     text-decoration: none;
+    flex-shrink: 0; /* Prevent logo from shrinking */
 }
 
 nav ul {
@@ -47,6 +55,7 @@ nav ul {
     gap: 1.5rem;
     align-items: center;
     margin: 0;
+    padding: 0; /* Ensure no default padding on ul */
 }
 
 nav a {
@@ -82,13 +91,14 @@ nav a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh; /* Use min-height to ensure it's at least viewport height */
     text-align: center;
-    padding-top: 60px;
+    padding-top: 60px; /* Offset for fixed header */
 }
 
 .hero-content {
     max-width: 800px;
+    padding: 2rem; /* Added padding to hero content */
 }
 
 .profile-pic {
@@ -130,6 +140,8 @@ h3 {
 .content-section {
     padding: 4rem 10%;
     text-align: center;
+    max-width: 1200px; /* Constrain content width */
+    margin: 0 auto; /* Center content sections */
 }
 
 h2 {
@@ -151,7 +163,7 @@ h2::after {
 /* About Container */
 .about-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Changed default to column to better fit slideshow */
     align-items: center;
     gap: 20px;
     max-width: 800px;
@@ -160,6 +172,7 @@ h2::after {
 
 .about-container p {
     text-align: justify;
+    padding: 0 1rem; /* Added small padding to text */
 }
 
 /* Slideshow Styles */
@@ -171,6 +184,7 @@ h2::after {
     border-radius: 8px;
     overflow: hidden;
     min-height: 300px; /* Give it a minimum height to avoid layout shift */
+    background-color: #eee; /* Placeholder background */
 }
 
 .slideshow-container img {
@@ -197,6 +211,7 @@ h2::after {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     text-align: left;
+    margin-top: 2rem;
 }
 
 .card, .project-card, .blog-card, .cert-card {
@@ -242,12 +257,12 @@ h2::after {
     margin: 40px auto;
     max-width: 800px;
     padding: 2rem;
+    border-radius: 10px; /* Added for consistency */
 }
 
 .testimonial {
     background-color: var(--secondary-color);
     color: white;
-    border-radius: 10px;
 }
 
 .testimonial blockquote {
@@ -256,6 +271,7 @@ h2::after {
     line-height: 1.6;
     margin-bottom: 10px;
     border: none;
+    padding: 0; /* Ensure no extra padding */
 }
 
 .testimonial cite {
@@ -263,9 +279,15 @@ h2::after {
     color: #24a56f;
 }
 
+.more-insights p {
+    padding: 0 1rem; /* Added padding to ensure text wrapping */
+}
+
 /* Page Specific Styles */
 .page-container {
     padding: 100px 10% 4rem;
+    max-width: 1200px; /* Constrain page content width */
+    margin: 0 auto; /* Center page content */
 }
 
 .page-title {
@@ -274,6 +296,7 @@ h2::after {
     margin-bottom: 3rem;
     position: relative;
     display: inline-block;
+    padding: 0 1rem; /* Added padding for smaller screens */
 }
 
 .page-title::after {
@@ -316,19 +339,22 @@ h2::after {
     align-items: center;
     justify-content: center;
     z-index: 2000;
+    overflow-y: auto; /* Allow scrolling if image is tall */
+    padding: 20px; /* Padding for modal content */
 }
 
 .modal-content {
     position: relative;
     max-width: 90%;
     max-height: 90%;
+    background-color: transparent; /* Changed to transparent for certs */
 }
 
 .modal-content img {
     width: auto;
     height: auto;
     max-width: 100%;
-    max-height: 100vh;
+    max-height: 95vh; /* Limit height to allow close button visibility */
     border-radius: 8px;
     box-shadow: 0 0 15px #222;
 }
@@ -346,6 +372,7 @@ h2::after {
     height: 40px;
     line-height: 40px;
     text-align: center;
+    z-index: 2001; /* Above modal image */
 }
 
 /* Footer */
@@ -359,6 +386,7 @@ footer {
 .footer-content {
     max-width: 800px;
     margin: 0 auto;
+    padding: 0 1rem; /* Added padding for footer content */
 }
 
 .contact-info {
@@ -391,6 +419,10 @@ footer {
 /* ========================================= */
 
 @media (max-width: 768px) {
+    body {
+        overflow-x: hidden; /* Explicitly hide horizontal overflow on mobile */
+    }
+
     h1, .page-title {
         font-size: 2.2rem;
     }
@@ -400,10 +432,20 @@ footer {
     }
 
     .content-section, .page-container {
-        padding: 4rem 5%;
+        padding: 4rem 5%; /* Adjusted side padding for smaller screens */
     }
 
     /* Mobile Header and Navigation */
+    header {
+        padding: 1rem 5%; /* Adjust header padding */
+        width: 100%; /* Ensure header spans full width */
+    }
+
+    nav {
+        max-width: 100%; /* Remove max-width for nav on mobile */
+        padding: 0 10px; /* Small padding inside nav */
+    }
+
     #menu-icon {
         display: block;
         font-size: 1.8rem;
@@ -425,6 +467,7 @@ footer {
         gap: 2rem;
         transition: right 0.3s ease-in-out;
         z-index: 1000;
+        padding: 0; /* Reset padding for mobile menu */
     }
     
     nav ul.active {
@@ -438,16 +481,82 @@ footer {
 
     nav .logo {
         font-size: 1rem;
+        white-space: normal; /* Allow logo text to wrap */
+        word-break: break-word; /* Break long words if necessary */
+        line-height: 1.2; /* Adjust line height for wrapped text */
     }
 
     /* Hero Section */
+    .hero {
+        min-height: 80vh; /* Adjust hero height for mobile */
+        padding-top: 80px; /* More padding to account for header height */
+    }
     .profile-pic {
         width: 120px;
         height: 120px;
     }
+    h1 {
+        font-size: 2rem;
+    }
+    .subtitle {
+        font-size: 1rem;
+    }
+    .social-links a {
+        font-size: 1.5rem;
+        margin: 0 0.8rem;
+    }
+
+    /* About Container */
+    .about-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .about-container p {
+        padding: 0; /* Remove extra padding on mobile */
+    }
+
+    /* Slideshow specific mobile adjustments */
+    .slideshow-container {
+        min-height: 200px; /* Smaller min-height on mobile */
+    }
+
 
     /* Grids */
     .experience-grid, .projects-grid, .blogs-grid, .certifications-grid {
         grid-template-columns: 1fr; 
+    }
+
+    /* Testimonial & More Insights */
+    .testimonial, .more-insights {
+        padding: 1.5rem; /* Reduce padding on mobile */
+    }
+    .testimonial blockquote {
+        font-size: 1rem;
+    }
+    .testimonial cite {
+        font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer .footer-content {
+        padding: 0 1rem;
+    }
+    .footer-nav a {
+        margin: 0 5px; /* Reduce spacing between footer links */
+    }
+
+    /* Modal close button adjustment for better visibility on mobile */
+    .close-modal {
+        top: 5px;
+        right: 5px;
+        font-size: 1.8rem;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+    }
+    .modal-content {
+        max-width: 95%; /* Make modal content slightly wider */
+        max-height: 95%;
     }
 }
