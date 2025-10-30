@@ -1,0 +1,603 @@
+/* General Styling */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #343a40;
+    --background-color: #f8f9fa; /* This is a light grey/white */
+    --text-color: #212529; /* This is a dark grey/black */
+    --card-bg: #ffffff;
+}
+
+/* Universal Box-Sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* The background color is now set by the canvas, so this is a fallback */
+    background-color: #1a1a1a; 
+    
+    /* === MODIFIED: Default text color is now light === */
+    /* This makes all text white/light by default, so it's visible on the dark background */
+    color: var(--background-color); 
+
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* === Animated Background Styles === */
+#background-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    background-color: #1a1a1a;
+}
+
+
+/* Header and Navigation */
+header {
+    background-color: var(--card-bg);
+    padding: 1rem 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1001;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+/* === MODIFIED: Set nav link color back to dark === */
+/* Since the header has a white background, its links need to be dark */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color); /* This makes nav links dark */
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--primary-color);
+}
+
+.contact-button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-button:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+#menu-icon {
+    display: none;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding-top: 60px;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+h3 {
+    color: var(--primary-color);
+}
+
+/* === MODIFIED: Subtitle color adjusted for readability === */
+.subtitle {
+    font-size: 1.2rem;
+    color: #cccccc; /* A slightly dimmer white for contrast */
+    margin-bottom: 1.5rem;
+}
+
+/* === MODIFIED: Social links color adjusted for readability === */
+.social-links a {
+    color: #ffffff; /* Make social links pure white */
+    font-size: 1.8rem;
+    margin: 0 1rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Content Sections */
+.content-section {
+    padding: 4rem 10%;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 0.5rem auto 0;
+}
+
+/* About Container */
+.about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* === MODIFIED: Added a semi-transparent panel for the About paragraph === */
+.about-container p {
+    text-align: justify;
+    background-color: rgba(40, 40, 40, 0.85); /* Dark, semi-transparent background */
+    padding: 2rem; /* Add padding inside the panel */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Slideshow Styles */
+.slideshow-container {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    margin: 20px auto;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #eee;
+    aspect-ratio: 4 / 3; 
+}
+
+.slideshow-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: none;
+    border-radius: 8px;
+}
+
+.slideshow-container img.active {
+    display: block;
+    animation: fadein 1s ease-in-out;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Grids */
+.experience-grid, .projects-grid, .blogs-grid, .certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    text-align: left;
+    margin-top: 2rem;
+}
+
+/* === MODIFIED: Set text color back to dark for all cards === */
+/* This is crucial. Since cards have a white background, their text must be dark. */
+.card, .project-card, .blog-card, .cert-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    color: var(--text-color); /* Set text to dark inside cards */
+}
+
+.card:hover, .project-card:hover, .blog-card:hover, .cert-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.date {
+    font-style: italic;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.project-link, .blog-card .project-link {
+    display: inline-block;
+    margin-top: auto;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Testimonial & More Insights */
+.testimonial, .more-insights {
+    text-align: center;
+    margin: 40px auto;
+    max-width: 800px;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.testimonial {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.testimonial blockquote {
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    border: none;
+    padding: 0;
+}
+
+.testimonial cite {
+    font-size: 1rem;
+    color: #24a56f;
+}
+
+.more-insights p {
+    padding: 0 1rem;
+}
+
+/* === MODIFIED: Make links in 'More Insights' section visible === */
+.more-insights a {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+
+/* Page Specific Styles */
+.page-container {
+    padding: 100px 10% 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    position: relative;
+    display: inline-block;
+    padding: 0 1rem;
+}
+
+.page-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 0.5rem auto 0;
+}
+
+/* Certifications Page */
+.cert-card {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.cert-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.cert-card img:hover {
+    transform: scale(1.05);
+}
+
+/* Certificate Modal Styles (No changes here) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    background-color: transparent;
+}
+
+.modal-content img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 95vh;
+    border-radius: 8px;
+    box-shadow: 0 0 15px #222;
+}
+
+.close-modal {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    z-index: 2001;
+}
+
+/* Footer */
+footer {
+    background-color: var(--text-color);
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.contact-info {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+}
+
+.contact-info .fab {
+    color: #25D366;
+    margin-right: 8px;
+}
+
+.footer-nav {
+    margin-bottom: 1rem;
+}
+
+.footer-nav a {
+    color: #ccc;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+    color: var(--primary-color);
+}
+
+.home-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s ease;
+}
+
+.home-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Mobile Responsiveness (No changes here) */
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    h1, .page-title {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .content-section, .page-container {
+        padding: 4rem 5%;
+    }
+
+    header {
+        padding: 1rem 5%;
+        width: 100%;
+    }
+
+    nav {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    #menu-icon {
+        display: block;
+        font-size: 1.8rem;
+        cursor: pointer;
+        z-index: 1002;
+    }
+
+    nav ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--secondary-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transition: right 0.3s ease-in-out;
+        z-index: 1000;
+        padding: 0;
+    }
+    
+    nav ul.active {
+        right: 0;
+    }
+
+    nav ul a {
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    nav .logo {
+        font-size: 1rem;
+        white-space: normal;
+        word-break: break-word;
+        line-height: 1.2;
+    }
+
+    .hero {
+        min-height: 80vh;
+        padding-top: 80px;
+    }
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    .subtitle {
+        font-size: 1rem;
+    }
+    .social-links a {
+        font-size: 1.5rem;
+        margin: 0 0.8rem;
+    }
+
+    .about-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .about-container p {
+        padding: 1.5rem; /* Adjust padding for mobile */
+    }
+
+    .slideshow-container {
+        min-height: 200px;
+    }
+
+    .experience-grid, .projects-grid, .blogs-grid, .certifications-grid {
+        grid-template-columns: 1fr; 
+    }
+
+    .testimonial, .more-insights {
+        padding: 1.5rem;
+    }
+    .testimonial blockquote {
+        font-size: 1rem;
+    }
+    .testimonial cite {
+        font-size: 0.9rem;
+    }
+
+    footer .footer-content {
+        padding: 0 1rem;
+    }
+    .footer-nav a {
+        margin: 0 5px;
+    }
+
+    .close-modal {
+        top: 5px;
+        right: 5px;
+        font-size: 1.8rem;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+    }
+    .modal-content {
+        max-width: 95%;
+        max-height: 95%;
+    }
+}

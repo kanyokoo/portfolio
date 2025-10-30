@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Writeups | Reuben Kanyoko Wahome</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- for the styling of the background-->
+    <canvas id="background-canvas"></canvas>
+
+    <!-- Shared Header & Navigation -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">All tech</a>
+            <ul id="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#experience">Experience</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="blogs.html">My Blogs</a></li>
+                <li><a href="certifications.html">Certifications</a></li>
+                <li><a href="mailto:reubenwahome25@gmail.com" class="contact-button">Contact Me</a></li>
+            </ul>
+            <div id="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="page-container">
+        <!-- Blog Posts Section -->
+        <section class="content-section">
+            <h1 class="page-title">Blog Posts & CTF Writeups</h1>
+            <div class="blogs-grid">
+                <!-- Blog 1 -->
+                <div class="blog-card">
+                    <h3>Network Security: Cracking Wi-Fi</h3>
+                    <p>A detailed walkthrough on the methodologies and tools used to test the security of WPA2-PSK networks.</p>
+                    <a href="https://medium.com/@itskanyoko/network-security-cracking-wifi-password-6815639e65ac" target="_blank" class="project-link">Read on Medium</a>
+                </div>
+                <!-- Blog 2 -->
+                <div class="blog-card">
+                    <h3>Secure Network Traffic</h3>
+                    <p>An article demonstrating the importance of HTTPS by sniffing unencrypted HTTP traffic to reveal sensitive data.</p>
+                    <a href="https://medium.com/@itskanyoko/secure-traffic-c641cb09d9ed" target="_blank" class="project-link">Read on Medium</a>
+                </div>
+                <!-- Blog 3 -->
+                <div class="blog-card">
+                    <h3>Scammer Alert: The Blockjet Investigation</h3>
+                    <p>My OSINT investigation and report on a fraudulent cryptocurrency platform targeting the African community.</p>
+                    <a href="https://medium.com/@itskanyoko/scammer-alert-698570601c22" target="_blank" class="project-link">Read on Medium</a>
+                </div>
+                 <!-- CTF Writeups -->
+                <div class="blog-card">
+                    <h3>CTF Writeup: This is Sparta</h3>
+                    <p>Solution and methodology for the "This is Sparta" challenge on the Cyber Talents platform.</p>
+                    <a href="https://medium.com/@itskanyoko/this-is-sparta-cyber-talents-80452ec3bed6" target="_blank" class="project-link">Read on Medium</a>
+                </div>
+                <div class="blog-card">
+                    <h3>CTF Writeup: cool-name-effect</h3>
+                    <p>A technical breakdown of the "cool-name-effect" CTF challenge from Cyber Talents.</p>
+                    <a href="https://medium.com/@itskanyoko/cool-name-effect-cyber-talents-e319afde361e" target="_blank" class="project-link">Read on Medium</a>
+                </div>
+                 <div class="blog-card">
+                    <h3>CTF Writeup: escalate</h3>
+                    <p>My approach to solving the "escalate" privilege escalation challenge on Cyber Talents.</p>
+                    <a href="https://medium.com/@itskanyoko/escalate-cyber-talents-challenge-7d8304dfbfc5" target="_blank" class="project-link">Read on Medium</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- section for images of competitions and hackathons -->
+        <section id="gallery" class="content-section">
+            <h2>Gallery</h2>
+            <div class="slideshow-container">
+                <img src="about_4.jpg" alt="during the safaricom Pwnzone CTF finals" class="active">
+                <img src="about_9.jpg" alt="Part of a winning team at Umma university">
+                <img src="about_3.jpg" alt="Reuben and his team after a CTF competition">
+                <img src="about_6.jpg" alt="secure expo inter-vasity finals">
+                <img src="about_8.jpg" alt="I&m bank ctf 2025">
+                <img src="about_13.jpg" alt="with fraize">
+                <img src="about_15.jpg" alt="doing the advent of cyber 2024">
+                <img src="about_18.jpg" alt="ending the day at Umma university hackathon">
+            </div> 
+        </section> 
+
+            <!-- Home Button Section -->
+    <section class="content-section" style="text-align: center; margin: 40px 0;">
+        <button onclick="window.location.href='index.html'" class="home-btn">🏠 Home</button>
+    </section>
+
+    </main>
+
+    <!-- Shared Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>Designed and Built by Mr. Kanyoko 🕵🏾‍♂️</p>
+            <p class="contact-info">
+                <i class="fab fa-whatsapp"></i> +254 799 934 798
+            </p>
+            <div class="footer-nav">
+                <a href="blogs.html">Blog & Writeups</a> | <a href="certifications.html">My Certifications</a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/reuben-kanyoko-wahome" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/kanyokoo" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://medium.com/@itskanyoko" target="_blank"><i class="fab fa-medium"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- for the background styling-->
+     <script src="background.js"></script>
+
+</body>
+</html>
