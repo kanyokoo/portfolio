@@ -507,7 +507,7 @@ footer {
         font-size: 1.8rem;
         cursor: pointer;
         z-index: 1002;
-        color: rgb(12, 4, 4);
+        color: var(--text-color);
     }
 
     nav ul {
