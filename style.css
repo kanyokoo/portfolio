@@ -135,7 +135,11 @@ h1 {
 }
 
 h3 {
-    color: var(--primary-color);
+    color: rgb(6, 6, 7);
+}
+
+h4 {
+    color: rgb(233, 233, 253);
 }
 
 /* === MODIFIED: Subtitle color adjusted for readability === */
@@ -279,6 +283,9 @@ h2::after {
     text-decoration: none;
     color: var(--primary-color);
     font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
 }
 
 /* Testimonial & More Insights */
@@ -500,6 +507,7 @@ footer {
         font-size: 1.8rem;
         cursor: pointer;
         z-index: 1002;
+        color: rgba(13, 13, 20, 0.068);
     }
 
     nav ul {
